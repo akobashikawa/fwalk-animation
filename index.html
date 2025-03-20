@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWalk</title>
+    <style>
+        :root {
+            --scale-factor: 1.8; /* Factor de escala centralizado */
+            --square-width: 15vw; /* Ancho centralizado */
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Altura de la pantalla completa */
+            margin: 0; /* Eliminar márgenes predeterminados */
+            overflow: hidden; /* Evitar scroll */
+        }
+        .square {
+            position: relative; /* Posicionamiento relativo para el cuadrado */
+            width: var(--square-width); /* Ancho centralizado */
+            height: calc(var(--square-width) * var(--scale-factor)); /* Altura escalada */
+            background-color: black; /* Color de fondo para visualizar el cuadrado */
+        }
+        .circle {
+            position: absolute; /* Posicionamiento absoluto para el círculo */
+            width: var(--square-width); /* Mismo ancho que el cuadrado */
+            height: calc(var(--square-width) * var(--scale-factor)); /* Altura escalada */
+            background-color: white; /* Color de fondo para visualizar el círculo */
+            border-radius: 50%; /* Convertir el div en un círculo */
+        }
+        .top-left {
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            animation: oscillate-up 3s infinite ease-in-out; /* Animación para la oscilación hacia arriba */
+        }
+        .top-right {
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%);
+            animation: oscillate-down 3s infinite ease-in-out; /* Animación para la oscilación hacia abajo */
+        }
+        .bottom-left {
+            bottom: 0;
+            left: 0;
+            transform: translate(-50%, 50%);
+            animation: oscillate-up 3s infinite ease-in-out; /* Animación para la oscilación hacia arriba */
+        }
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            transform: translate(50%, 50%);
+            animation: oscillate-down 3s infinite ease-in-out; /* Animación para la oscilación hacia abajo */
+        }
+        @keyframes oscillate-up {
+            0%, 100% {
+                top: 10%;
+            }
+            50% {
+                top: -10%;
+            }
+        }
+        @keyframes oscillate-down {
+            0%, 100% {
+                top: -10%;
+            }
+            50% {
+                top: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="square">
+        <div class="circle top-left"></div>
+        <div class="circle top-right"></div>
+        <div class="circle bottom-left"></div>
+        <div class="circle bottom-right"></div>
+    </div>
+</body>
+</html>
